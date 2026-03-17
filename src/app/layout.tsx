@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   description: '研究発表のための投稿・審査・公開・議論プラットフォーム',
 }
 
+import { DemoRoleSwitcher } from '@/components/DemoRoleSwitcher'
+
 export default function RootLayout({
   children,
 }: {
@@ -13,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body>
+        {children}
+        <DemoRoleSwitcher />
+      </body>
     </html>
   )
 }

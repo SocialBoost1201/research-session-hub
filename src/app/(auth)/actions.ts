@@ -77,3 +77,31 @@ export async function logout() {
   cookieStore.delete('demo_user_role')
   redirect('/login')
 }
+
+export async function switchDemoRole(email: string) {
+  // デモ用：メールアドレスで対応ユーザーを探す
+  const demoAccounts: Record<string, string> = {
+    'office@demo.com':    'user-office-1',
+    'presenter@demo.com': 'user-presenter-1',
+    'presenter2@demo.com':'user-presenter-2',
+    'viewer@demo.com':    'user-viewer-1',
+  }
+
+  const userId = demoAccounts[email.toLowerCase()]
+  if (!userId) {
+    return { error: 'ユーザー情報が見つかりません' }
+  }
+
+  const profile = getProfile(userId)
+  if (!profile) {
+    return { error: 'ユーザー情報が見つかりません' }
+  }
+
+  const cookieStore = await cookies()
+  cookieStore.set(DEMO_COOKIE, userId, { path: '/', httpOnly: true, sameSite: 'lax' })
+  cookieStore.set('demo_user_role', profile.role, { path: '/', httpOnly: true, sameSite: 'lax' })
+
+  // 切り替え後は現在のページをリロードさせるため、redirect は呼ばないか、
+  // もしくは呼び出し元でリフレッシュさせる
+  return { success: true }
+}

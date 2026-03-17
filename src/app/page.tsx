@@ -71,7 +71,7 @@ export default function HomePage() {
             marginBottom: '2rem',
             maxWidth: 440,
           }}>
-            投稿・査読・差し戻し・公開・議論まで、研究発表のフロー全体を一元管理するプラットフォームです。
+            投稿・事務局確認・差し戻し・公開・コメント議論まで、研究発表のフロー全体を一元管理するプラットフォームです。
           </p>
 
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
@@ -147,7 +147,7 @@ export default function HomePage() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
           {[
             { icon: '📄', title: '投稿・提出', desc: 'PDF原稿のアップロードとバージョン管理に対応' },
-            { icon: '🔍', title: '審査・差し戻し', desc: '事務局が差し戻しコメントを付けて再提出を促せる' },
+            { icon: '🔍', title: '事務局確認・差し戻し', desc: '事務局が確認し、コメントを付けて再提出を促せる' },
             { icon: '🔒', title: '会員限定公開', desc: 'ロールに応じたアクセス制御で段階的に公開' },
             { icon: '💬', title: 'コメント議論', desc: '論文ごとのスレッドで発表者と読者が議論できる' },
           ].map(item => (
